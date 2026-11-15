@@ -136,7 +136,9 @@ jobs:
             --legacy-peer-deps
 
       - name: Crear directorio de reportes
-        run: mkdir -p reports
+        run: |
+          mkdir -p reports
+          chmod 777 reports
 
       - name: Ejecutar OWASP Dependency-Check
         run: |
