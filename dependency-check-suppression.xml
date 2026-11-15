@@ -7,40 +7,26 @@
         https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.4.xsd
         https://dependency-check.github.io/DependencyCheck/dependency-suppression.1.4.xsd">
 
-    <!--
-        Excepción temporal utilizada exclusivamente para la Tarea S07.
-
-        NodeGoat es una aplicación intencionalmente vulnerable utilizada
-        con fines académicos. El run #6 conserva la evidencia original
-        de las vulnerabilidades HIGH y CRITICAL encontradas.
-
-        Esta excepción representa una aceptación temporal de riesgo para
-        demostrar el funcionamiento de una suppression rule y el cambio
-        del Quality Gate de FAILED a SUCCESS.
-
-        Esta política NO es apropiada para ambientes productivos.
-    -->
-
     <suppress until="2026-12-31Z">
 
         <notes><![CDATA[
-        Aceptación temporal del baseline vulnerable de OWASP NodeGoat.
-        Evidencia original preservada en el pipeline FAILED #6.
-        Uso exclusivo para laboratorio académico S07.
+        Aceptación temporal de riesgo aplicada exclusivamente al laboratorio
+        académico de la Tarea S07.
+
+        OWASP NodeGoat es una aplicación deliberadamente vulnerable utilizada
+        para demostrar el funcionamiento de controles SAST, SCA, SBOM y
+        Quality Gate.
+
+        Las vulnerabilidades originales HIGH y CRITICAL fueron identificadas
+        y preservadas como evidencia en el pipeline FAILED previo.
+
+        La presente excepción no representa una corrección de las
+        vulnerabilidades de terceros ni debe utilizarse en producción.
+        Su objetivo es demostrar una excepción documentada y con fecha de
+        expiración dentro del proceso DevSecOps.
         ]]></notes>
 
-        <cvssBelow>11</cvssBelow>
-
-    </suppress>
-
-    <suppress until="2026-12-31Z">
-
-        <notes><![CDATA[
-        Supresión temporal de advisories GHSA asociados a dependencias
-        npm del proyecto deliberadamente vulnerable NodeGoat.
-        ]]></notes>
-
-        <packageUrl regex="true">^pkg:npm/.*$</packageUrl>
+        <packageUrl regex="true">^pkg:(npm|javascript)/.*$</packageUrl>
 
         <vulnerabilityName regex="true">.*</vulnerabilityName>
 
