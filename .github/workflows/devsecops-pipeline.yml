@@ -127,6 +127,8 @@ jobs:
         run: mkdir -p reports
 
       - name: Ejecutar OWASP Dependency-Check
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
           docker run --rm \
             -v "$PWD:/src" \
@@ -136,6 +138,7 @@ jobs:
             --scan /src \
             --format ALL \
             --out /report \
+            --nvdApiKey "$NVD_API_KEY" \
             --failOnCVSS 7 \
             --enableExperimental
 
