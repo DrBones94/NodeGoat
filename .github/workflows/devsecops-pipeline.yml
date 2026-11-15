@@ -123,12 +123,22 @@ jobs:
       - name: Checkout del codigo
         uses: actions/checkout@v4
 
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Instalar dependencias del proyecto
+        run: |
+          npm install \
+            --omit=dev \
+            --ignore-scripts \
+            --legacy-peer-deps
+
       - name: Crear directorio de reportes
         run: mkdir -p reports
 
       - name: Ejecutar OWASP Dependency-Check
-        env:
-          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
           docker run --rm \
             -v "$PWD:/src" \
@@ -138,7 +148,7 @@ jobs:
             --scan /src \
             --format ALL \
             --out /report \
-            --nvdApiKey "$NVD_API_KEY" \
+            --nvdDatafeed "https://dependency-check.github.io/DependencyCheck_Builder/nvd_cache/nvdcve-{0}.json.gz" \
             --failOnCVSS 7 \
             --enableExperimental
 
