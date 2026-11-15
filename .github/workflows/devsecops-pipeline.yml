@@ -146,11 +146,10 @@ jobs:
             owasp/dependency-check:13.0.0 \
             --project "NodeGoat-S07" \
             --scan /src \
-            --format ALL \
+            --format HTML \
             --out /report \
             --nvdDatafeed "https://dependency-check.github.io/DependencyCheck_Builder/nvd_cache/nvdcve-{0}.json.gz" \
-            --failOnCVSS 7 \
-            --enableExperimental
+            --failOnCVSS 7
 
       - name: Mostrar reportes generados
         if: always()
