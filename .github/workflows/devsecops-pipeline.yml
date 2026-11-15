@@ -151,6 +151,7 @@ jobs:
             --format HTML \
             --out /report \
             --nvdDatafeed "https://dependency-check.github.io/DependencyCheck_Builder/nvd_cache/nvdcve-{0}.json.gz" \
+            --suppression /src/dependency-check-suppression.xml \
             --failOnCVSS 7
 
       - name: Mostrar reportes generados
