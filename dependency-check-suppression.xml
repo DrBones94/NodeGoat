@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suppressions
+    xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.4.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.4.xsd
+        https://dependency-check.github.io/DependencyCheck/dependency-suppression.1.4.xsd">
+
+    <!--
+        Excepción temporal utilizada exclusivamente para la Tarea S07.
+
+        NodeGoat es una aplicación intencionalmente vulnerable utilizada
+        con fines académicos. El run #6 conserva la evidencia original
+        de las vulnerabilidades HIGH y CRITICAL encontradas.
+
+        Esta excepción representa una aceptación temporal de riesgo para
+        demostrar el funcionamiento de una suppression rule y el cambio
+        del Quality Gate de FAILED a SUCCESS.
+
+        Esta política NO es apropiada para ambientes productivos.
+    -->
+
+    <suppress until="2026-12-31Z">
+
+        <notes><![CDATA[
+        Aceptación temporal del baseline vulnerable de OWASP NodeGoat.
+        Evidencia original preservada en el pipeline FAILED #6.
+        Uso exclusivo para laboratorio académico S07.
+        ]]></notes>
+
+        <cvssBelow>11</cvssBelow>
+
+    </suppress>
+
+    <suppress until="2026-12-31Z">
+
+        <notes><![CDATA[
+        Supresión temporal de advisories GHSA asociados a dependencias
+        npm del proyecto deliberadamente vulnerable NodeGoat.
+        ]]></notes>
+
+        <packageUrl regex="true">^pkg:npm/.*$</packageUrl>
+
+        <vulnerabilityName regex="true">.*</vulnerabilityName>
+
+    </suppress>
+
+</suppressions>
